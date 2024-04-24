@@ -80,7 +80,7 @@ const AddCoffee = () => {
                                 <input type="text" 
                                 className="w-full input input-bordered join-item" 
                                 name="quantity" 
-                                placeholder="Enter coffee chef"
+                                placeholder="Enter Quantity"
                                 id="" />
                             </label>
                         </div>

@@ -25,7 +25,7 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
-                        if (data.deleteCount > 0) {
+                        if (data.deletedCount > 0) {
                               Swal.fire({
                                 title: "Deleted!",
                                 text: "Your Coffee has been deleted.",
@@ -34,6 +34,8 @@ const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
 
                               const remaining = coffees.filter(cof => cof._id !== _id);
                               setCoffees(remaining);
+                              
+                        
                         }
                     })
             }

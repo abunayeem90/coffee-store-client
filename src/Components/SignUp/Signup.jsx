@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 
-const Signup = () => {
+const Signup =  () => {
 
     const {createUser} = useContext(AuthContext);
 
@@ -17,6 +17,21 @@ const Signup = () => {
         .then(result => {
             console.log(result);
             // new user has been created
+            const createdAt = result.user?.metadata?.creationTime;
+            const user = {email, createdAt: createdAt};
+            fetch('http://localhost:5000/user',{
+              method: 'POST',
+              headers: {
+                'content-type' : 'application/json'
+              },
+              body: JSON.stringify(user)
+              })
+              .then(res => res.json())
+              .then(data => {
+                if(data.insertedId){
+                  console.log('User added database');
+                }
+            })
         })
         .catch( error => {
             console.error(error);
